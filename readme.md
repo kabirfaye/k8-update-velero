@@ -93,6 +93,16 @@ cat > velero-policy.json <<EOF
             "Resource": [
                 "arn:aws:s3:::${BUCKET}"
             ]
+        },
+        {
+          "Effect": "Allow",
+          "Action": [
+            "kms:GenerateDataKey",
+            "kms:Decrypt",
+            "kms:Encrypt",
+            "kms:DescribeKey"
+          ],
+          "Resource": "arn:aws:kms:eu-west-1:<account-id>:key/<your-kms-key-id>"
         }
     ]
 }
